@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PATH · Free tutoring and college prep for Austin students</title>
+<meta name="description" content="PATH is a UT Austin student organization. UT volunteers tutor and mentor Austin K–12 students and help families through college prep, for free.">
+<meta property="og:title" content="PATH: Preparing Austin's Tomorrow for Higher-ed">
+<meta property="og:description" content="Free tutoring, mentoring and college prep for Austin K–12 students, run by UT Austin students.">
+<meta name="theme-color" content="#0B3B34">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='30' fill='%23115E52'/%3E%3Cpath d='M40 86 C 40 72, 82 78, 81 62 C 80 50, 60 54, 60 46' fill='none' stroke='%23F4B63F' stroke-width='10' stroke-linecap='round'/%3E%3Ccircle cx='40' cy='93' r='7' fill='%23115E52' stroke='%23F4B63F' stroke-width='5'/%3E%3Cpolygon points='60,15 83,25.5 60,36 37,25.5' fill='%23F3F7F4'/%3E%3Cpath d='M47 30 L47 38 Q60 44 73 38 L73 30 L60 36 Z' fill='%23CFE3DC'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#0B3B34; --green:#115E52; --green-ink:#0F5247; --gold:#F4B63F; --gold-hover:#E8A626;
+  --mist:#EEF4F1; --paper:#FFFFFF; --ink:#14231F; --muted:#4A5753; --line:#CFDCD6; --sage:#CFE3DC;
+  --on-dark:#F3F7F4; --on-dark-muted:#B9D0C8; --focus:#2F6FD6; --error:#B42318;
+  --display:'Bricolage Grotesque','Arial Black',system-ui,sans-serif;
+  --body:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --mist:#0F2622; --paper:#15322D; --ink:#E5EFEB; --muted:#A8BBB5; --line:#2B4A44; --green-ink:#7CCAB9;
+    --pine:#08231F; --focus:#8DB4FF; --error:#FF9C8F;
+  }
+}
+:root[data-theme="dark"]{
+  --mist:#0F2622; --paper:#15322D; --ink:#E5EFEB; --muted:#A8BBB5; --line:#2B4A44; --green-ink:#7CCAB9;
+  --pine:#08231F; --focus:#8DB4FF; --error:#FF9C8F;
+}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none !important}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--mist); color:var(--ink); font-family:var(--body); font-size:18px; line-height:1.6; -webkit-font-smoothing:antialiased}
+svg{max-width:100%}
+a{color:var(--green-ink)}
+:focus-visible{outline:3px solid var(--focus); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px}
+h1,h2,h3{font-family:var(--display); margin:0; line-height:1; letter-spacing:-0.025em}
+h2{font-size:clamp(36px,5vw,62px); font-weight:800; letter-spacing:-0.035em}
+h3{font-size:26px; font-weight:700; letter-spacing:-0.015em; line-height:1.1}
+p{margin:0}
+.lede{font-size:clamp(18px,1.5vw,21px); color:var(--muted); max-width:36em}
+.skip{position:absolute; left:12px; top:-60px; background:var(--gold); color:#14231F; padding:10px 16px; border-radius:10px; font-weight:700; z-index:50}
+.skip:focus{top:12px}
+
+/* Buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; padding:0 26px; border-radius:999px; font:700 17px var(--body); text-decoration:none; border:2px solid transparent; cursor:pointer; transition:background-color .15s, transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold); color:#14231F}
+.btn-gold:hover{background:var(--gold-hover)}
+.btn-ghost{color:var(--on-dark); border-color:rgba(243,247,244,.55); background:transparent}
+.btn-ghost:hover{background:rgba(243,247,244,.1); border-color:var(--on-dark)}
+.btn-line{color:var(--ink); border-color:var(--line); background:var(--paper)}
+.btn-line:hover{border-color:var(--ink)}
+
+/* Header */
+header.site{position:sticky; top:0; z-index:30; background:var(--pine); color:var(--on-dark); padding-top:env(safe-area-inset-top,0px); margin-top:calc(-1 * env(safe-area-inset-top,0px))}
+.bar{display:flex; align-items:center; justify-content:space-between; height:72px; gap:16px}
+.brand{display:flex; align-items:center; gap:12px; color:inherit; text-decoration:none}
+.brand svg{width:40px; height:40px; flex:none}
+.brand b{font-family:var(--display); font-weight:800; font-size:27px; letter-spacing:-0.03em}
+nav.primary ul{list-style:none; margin:0; padding:0; display:flex; align-items:center; gap:2px}
+nav.primary a{display:inline-flex; align-items:center; min-height:44px; padding:0 14px; border-radius:999px; color:var(--on-dark); text-decoration:none; font-weight:700; font-size:16px}
+nav.primary a:hover{background:rgba(243,247,244,.1)}
+nav.primary .btn{min-height:44px; padding:0 20px; margin-left:10px; color:#14231F}
+nav.primary .btn:hover{background:var(--gold-hover)}
+.menu-toggle{display:none; min-height:44px; padding:0 16px; border-radius:999px; border:2px solid rgba(243,247,244,.4); background:transparent; color:var(--on-dark); font:700 16px var(--body); cursor:pointer}
+@media (max-width: 880px){
+  .menu-toggle{display:inline-flex; align-items:center}
+  nav.primary{position:absolute; left:0; right:0; top:100%; background:var(--pine); padding:8px 16px 20px; border-top:1px solid rgba(243,247,244,.12); display:none}
+  nav.primary.open{display:block}
+  nav.primary ul{flex-direction:column; align-items:stretch; gap:4px}
+  nav.primary .btn{margin:10px 0 0}
+}
+
+/* Hero */
+.hero{position:relative; background:var(--pine); color:var(--on-dark); overflow:hidden; text-align:center}
+.hero .topo{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
+.hero .topo path{fill:none; stroke:#2C7466; stroke-width:1.2; opacity:.55}
+.hero-inner{position:relative; padding:88px 0 0}
+.hero h1{font-size:clamp(46px,8.2vw,112px); font-weight:800; letter-spacing:-0.045em; line-height:.95; max-width:11.5em; margin:0 auto}
+.hero .lede{color:var(--on-dark-muted); margin:28px auto 0; max-width:34em}
+.hero .cta-row{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:36px}
+.facts{list-style:none; margin:52px auto 0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 34px; color:var(--on-dark); font-weight:700; font-size:16px}
+.facts li{display:flex; align-items:center; gap:10px}
+.facts svg{flex:none}
+.trailhead{position:relative; height:150px; margin-top:28px}
+.trailhead svg{position:absolute; left:50%; transform:translateX(-50%); bottom:0; overflow:visible}
+.trailhead .label{position:absolute; left:calc(50% + 30px); top:30px; font-weight:700; font-size:15px; color:var(--on-dark-muted); text-align:left}
+
+/* Journey */
+.journey{position:relative; padding:24px 0 110px}
+.journey-head{text-align:center; max-width:760px; margin:0 auto 64px; padding-top:72px}
+.journey-head .lede{margin:22px auto 0}
+.stops{position:relative}
+.stop-list{list-style:none; margin:0; padding:0; position:relative}
+.trail-svg{position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none; overflow:visible}
+.trail-svg .base{fill:none; stroke:var(--line); stroke-width:10; stroke-linecap:round}
+.trail-svg .walk{fill:none; stroke:var(--gold); stroke-width:10; stroke-linecap:round}
+.trail-svg .dash{fill:none; stroke:#FFF6DD; stroke-width:2; stroke-dasharray:2 11; stroke-linecap:round}
+.stop{position:relative; display:grid; grid-template-columns:1fr 120px 1fr; align-items:center; min-height:260px}
+.stop .marker{grid-column:2; justify-self:center; width:44px; height:44px; border-radius:50%; background:var(--mist); border:7px solid var(--green-ink); position:relative; z-index:2}
+.stop .card{grid-column:3; max-width:440px}
+.stop:nth-child(even) .card{grid-column:1; grid-row:1; justify-self:end; text-align:right}
+.stop .grades{display:block; font-family:var(--display); font-weight:700; font-size:17px; color:var(--green-ink); margin-bottom:8px; letter-spacing:-0.01em}
+.stop h3{font-size:clamp(28px,3.2vw,40px); font-weight:800; letter-spacing:-0.03em}
+.stop p{color:var(--muted); margin-top:12px}
+.stop ul{list-style:none; margin:16px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px}
+.stop:nth-child(even) ul{justify-content:flex-end}
+.stop li{padding:6px 14px; border-radius:999px; background:var(--paper); border:1px solid var(--line); font-size:15px; font-weight:700}
+.stop.summit .marker{width:auto; height:auto; border:0; background:none; border-radius:0}
+.stop.summit .marker svg{display:block; width:96px; height:64px}
+.cap-top{fill:var(--green-ink)} .cap-base{fill:var(--pine)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cap-base{fill:#3E8F80}}
+:root[data-theme="dark"] .cap-base{fill:#3E8F80}
+@media (max-width: 760px){
+  .journey-head{text-align:left; margin-bottom:40px}
+  .journey-head .lede{margin-left:0}
+  .stop{grid-template-columns:56px 1fr; min-height:0; padding:22px 0 34px; align-items:start}
+  .stop .marker{grid-column:1; justify-self:start; margin-left:4px; width:36px; height:36px; border-width:6px}
+  .stop .card, .stop:nth-child(even) .card{grid-column:2; grid-row:1; justify-self:start; text-align:left}
+  .stop:nth-child(even) ul{justify-content:flex-start}
+  .stop.summit .marker{margin-left:-14px}
+  .stop.summit .marker svg{width:72px; height:48px}
+}
+
+/* Volunteer steps */
+section.block{padding:110px 0}
+.volunteer{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.split-head{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:40px; align-items:end; margin-bottom:56px}
+@media (max-width: 880px){.split-head{grid-template-columns:1fr; gap:20px}}
+.steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px; counter-reset:step}
+.steps li{counter-increment:step; position:relative; padding-top:86px}
+.steps li::before{content:counter(step); position:absolute; top:0; left:0; font-family:var(--display); font-weight:800; font-size:64px; line-height:1; color:var(--green-ink); letter-spacing:-0.04em}
+.steps li::after{content:""; position:absolute; top:30px; left:56px; right:-28px; border-top:3px dashed var(--line)}
+.steps li:last-child::after{display:none}
+.steps h3{margin-bottom:10px}
+.steps p{color:var(--muted); font-size:17px}
+@media (max-width: 880px){
+  .steps{grid-template-columns:1fr; gap:34px}
+  .steps li{padding:0 0 0 76px; min-height:56px}
+  .steps li::before{font-size:52px}
+  .steps li::after{display:none}
+}
+.note{margin-top:52px; display:flex; gap:14px; align-items:flex-start; padding:20px 22px; border-radius:16px; background:var(--mist); color:var(--muted); font-size:17px; max-width:52em}
+.note svg{flex:none; margin-top:3px}
+
+/* Schools */
+.schools{background:var(--green); color:var(--on-dark); position:relative; overflow:hidden}
+.schools h2{color:var(--on-dark)}
+.schools .lede{color:#D2E5DE; margin-top:22px}
+.schools-grid{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:56px; align-items:center}
+.offer{list-style:none; margin:0; padding:0; display:grid; gap:2px; border-radius:20px; overflow:hidden}
+.offer li{display:grid; grid-template-columns:30px 1fr; gap:14px; padding:20px 22px; background:rgba(11,59,52,.55)}
+.offer b{display:block; font-size:18px}
+.offer span{color:#C4DAD2; font-size:16px}
+.schools .cta-row{margin-top:32px; display:flex; flex-wrap:wrap; gap:12px}
+@media (max-width: 880px){.schools-grid{grid-template-columns:1fr; gap:40px}}
+
+/* FAQ */
+.faq-grid{display:grid; grid-template-columns:minmax(0,0.8fr) minmax(0,1.4fr); gap:56px}
+@media (max-width: 880px){.faq-grid{grid-template-columns:1fr; gap:24px}}
+.faq-grid .lede{margin-top:18px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:68px; padding:14px 0; font-weight:700; font-size:20px; line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .plus{flex:none; width:32px; height:32px; border-radius:50%; border:2px solid var(--line); position:relative; transition:transform .2s, background-color .2s}
+.faq summary .plus::before,.faq summary .plus::after{content:""; position:absolute; left:50%; top:50%; width:12px; height:2px; background:var(--ink); transform:translate(-50%,-50%)}
+.faq summary .plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] .plus{transform:rotate(45deg); background:var(--gold); border-color:var(--gold)}
+.faq details[open] .plus::before,.faq details[open] .plus::after{background:#14231F}
+.faq details p{padding:0 48px 24px 0; color:var(--muted)}
+
+/* Join */
+.join{background:var(--paper); border-top:1px solid var(--line)}
+.join-grid{display:grid; grid-template-columns:minmax(0,0.85fr) minmax(0,1.25fr); gap:56px; align-items:start}
+@media (max-width: 880px){.join-grid{grid-template-columns:1fr; gap:32px}}
+.join .lede{margin-top:20px}
+.contact{margin-top:32px; display:grid; gap:12px}
+.contact a{font-weight:700}
+.contact p{color:var(--muted); font-size:16px}
+.panel{background:var(--mist); border:1px solid var(--line); border-radius:24px; padding:30px}
+@media (max-width: 560px){.panel{padding:20px; border-radius:20px}}
+.tabs{display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:6px; background:var(--paper); border:1px solid var(--line); border-radius:999px; margin-bottom:28px}
+.tabs button{min-height:46px; border:0; border-radius:999px; background:transparent; color:var(--ink); font:700 16px var(--body); cursor:pointer; padding:0 12px}
+.tabs button[aria-selected="true"]{background:var(--green); color:#F3F7F4}
+form{display:grid; gap:20px}
+.row2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
+@media (max-width: 560px){.row2{grid-template-columns:1fr}}
+label,.legend{display:block; font-weight:700; font-size:16px; margin-bottom:8px}
+.hint{font-weight:400; color:var(--muted)}
+input[type=text],input[type=email],select,textarea{width:100%; min-height:50px; padding:11px 15px; border:2px solid var(--line); border-radius:14px; background:var(--paper); color:var(--ink); font:400 17px var(--body)}
+textarea{min-height:112px; resize:vertical}
+select{appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%234A5753' stroke-width='2'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:42px}
+input:focus,select:focus,textarea:focus{outline:none; border-color:var(--green); box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 22%,transparent)}
+fieldset{border:0; margin:0; padding:0; min-width:0}
+.checks{display:flex; flex-wrap:wrap; gap:10px}
+.checks label{display:inline-flex; align-items:center; gap:9px; min-height:46px; padding:0 16px; margin:0; border:2px solid var(--line); border-radius:999px; background:var(--paper); cursor:pointer}
+.checks input{width:18px; height:18px; accent-color:var(--green); margin:0}
+.checks label:has(input:checked){border-color:var(--green); background:color-mix(in srgb,var(--green) 12%,var(--paper))}
+.error{color:var(--error); font-size:15px; font-weight:700; margin-top:7px}
+[aria-invalid="true"]{border-color:var(--error) !important}
+.submit-row{display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px}
+.submit-row p{font-size:15px; color:var(--muted); flex:1 1 220px}
+button[type=submit][disabled]{opacity:.7; cursor:progress}
+.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+.done{display:grid; gap:16px; justify-items:start}
+.done h3{font-size:32px}
+.done p{color:var(--muted)}
+.done textarea{font-size:15px; min-height:170px}
+.fallback{display:grid; gap:12px; width:100%}
+
+/* Footer */
+footer{background:var(--pine); color:var(--on-dark-muted); padding:56px 0 64px; font-size:16px}
+.foot{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:28px; align-items:end}
+.foot .brand{color:var(--on-dark); margin-bottom:14px}
+.foot a{color:var(--on-dark)}
+.foot-links{display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:flex-end}
+@media (max-width: 700px){.foot{grid-template-columns:1fr}.foot-links{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="PATH home">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="#115E52"/><path d="M40 86 C 40 72, 82 78, 81 62 C 80 50, 60 54, 60 46" fill="none" stroke="#F4B63F" stroke-width="9" stroke-linecap="round"/><circle cx="40" cy="93" r="7" fill="#115E52" stroke="#F4B63F" stroke-width="5"/><path d="M47 30 L47 38 Q60 44 73 38 L73 30 L60 36 Z" fill="#CFE3DC"/><polygon points="60,15 83,25.5 60,36 37,25.5" fill="#F3F7F4"/><path d="M79 27 L79 37" stroke="#F4B63F" stroke-width="2.4" stroke-linecap="round"/><circle cx="79" cy="39" r="2.8" fill="#F4B63F"/></svg>
+      <b>PATH</b>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="primary" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#trail">What we do</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
+        <li><a href="#schools">For schools</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="btn btn-gold" href="#join" data-tab="volunteer">Apply</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="heroTitle">
+    <svg class="topo" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M242 214C231 211 216 207 211 200C206 193 210 182 212 173C215 164 218 154 226 149C234 143 250 141 261 141C272 142 283 148 292 153C301 159 312 166 313 174C315 182 307 191 301 198C295 206 287 215 277 217C267 220 253 217 242 214Z"/><path d="M216 249C195 240 177 227 166 212C155 197 147 176 150 158C154 140 168 112 188 103C208 94 245 100 270 103C294 107 318 112 336 124C355 136 375 154 380 173C385 191 381 220 366 236C351 251 315 263 290 265C265 267 237 258 216 249Z"/><path d="M175 291C138 277 80 258 69 233C59 208 100 172 115 142C130 112 131 68 159 54C188 40 250 50 287 58C324 66 359 83 381 103C403 123 416 153 418 179C419 205 410 235 390 259C370 283 332 317 296 322C260 327 213 306 175 291Z"/><path d="M142 313C97 291 42 267 24 232C5 198 7 140 29 106C51 72 109 45 157 28C205 11 272 -6 316 4C361 14 400 58 425 89C450 120 466 155 465 189C464 222 447 261 418 290C389 320 335 364 289 367C243 371 186 336 142 313Z"/><path d="M81 353C33 323 1 272 -15 226C-32 179 -44 115 -17 74C10 32 85 -8 146 -23C206 -39 278 -30 344 -18C410 -7 502 8 542 46C581 85 597 164 581 211C565 258 497 296 446 330C395 363 335 406 274 410C213 414 130 384 81 353Z"/><path d="M17 385C-51 353 -137 286 -153 226C-169 167 -130 74 -79 27C-28 -20 70 -30 153 -55C236 -79 355 -139 418 -119C481 -98 501 12 532 70C564 128 610 175 606 232C602 289 569 382 510 412C451 442 335 418 252 413C170 409 84 416 17 385Z"/><path d="M-42 401C-93 350 -71 270 -83 200C-95 131 -150 44 -112 -16C-75 -76 47 -143 140 -160C234 -176 354 -145 449 -114C543 -83 677 -34 709 28C741 90 670 185 639 257C608 330 592 420 522 461C452 503 312 517 218 507C124 497 8 452 -42 401Z"/><path d="M1175 228C1179 220 1184 211 1193 207C1202 202 1218 199 1229 201C1239 202 1250 210 1257 217C1264 223 1271 232 1271 240C1270 247 1260 254 1254 260C1247 267 1239 275 1229 277C1220 279 1205 276 1195 272C1185 269 1173 262 1169 254C1166 247 1171 236 1175 228Z"/><path d="M1110 205C1117 190 1151 178 1173 171C1196 164 1222 160 1245 163C1268 166 1301 175 1313 189C1325 202 1318 226 1316 244C1314 262 1314 284 1300 296C1286 307 1254 313 1232 314C1209 315 1183 310 1165 301C1148 292 1136 277 1127 261C1117 245 1102 220 1110 205Z"/><path d="M1054 176C1076 154 1125 143 1161 135C1196 127 1234 121 1268 127C1301 133 1337 151 1361 173C1385 195 1417 233 1410 258C1404 283 1353 304 1322 322C1292 340 1263 362 1228 366C1193 369 1146 359 1114 343C1081 327 1042 299 1032 271C1022 243 1033 199 1054 176Z"/><path d="M998 140C1019 105 1086 64 1136 55C1186 47 1252 73 1299 90C1347 107 1397 129 1420 159C1444 189 1445 234 1440 273C1434 312 1423 365 1385 393C1348 421 1264 447 1213 440C1163 434 1116 385 1083 356C1049 326 1027 299 1013 263C999 227 978 174 998 140Z"/><path d="M1001 125C1040 90 1095 61 1152 48C1210 34 1289 26 1347 42C1404 59 1476 104 1499 145C1521 187 1505 253 1482 293C1459 334 1407 362 1359 389C1310 415 1250 453 1193 453C1136 452 1064 420 1018 387C972 355 920 302 917 258C914 214 962 160 1001 125Z"/><path d="M894 41C950 -6 1065 -35 1149 -41C1233 -47 1327 -24 1397 7C1468 37 1541 88 1572 142C1602 197 1615 287 1582 334C1549 382 1443 394 1371 429C1299 464 1228 543 1152 543C1077 544 975 482 918 432C860 382 812 308 808 243C804 178 837 89 894 41Z"/><path d="M876 -1C928 -48 1080 -55 1174 -56C1268 -57 1378 -46 1442 -9C1506 28 1525 102 1556 166C1587 229 1659 321 1628 371C1598 421 1455 448 1374 468C1292 487 1215 499 1140 488C1065 478 970 447 923 403C876 359 867 291 859 224C851 157 823 45 876 -1Z"/><path d="M917 -5C998 -44 1114 -50 1203 -46C1291 -42 1379 -17 1448 20C1517 56 1597 115 1618 174C1638 234 1609 313 1572 375C1535 438 1472 528 1394 550C1316 573 1214 523 1106 509C998 494 809 518 744 465C679 412 687 270 716 191C745 113 835 35 917 -5Z"/><path d="M1158 855C1149 861 1132 866 1119 866C1106 866 1088 862 1079 855C1069 848 1065 837 1062 827C1059 816 1054 803 1060 793C1066 784 1083 772 1096 769C1110 766 1130 771 1143 776C1156 780 1171 788 1176 797C1182 806 1180 819 1177 828C1174 838 1168 849 1158 855Z"/><path d="M1185 889C1165 900 1134 911 1109 910C1084 909 1057 896 1036 882C1015 869 984 847 982 829C981 810 1007 786 1026 771C1044 756 1066 749 1092 741C1117 733 1156 718 1180 724C1204 731 1228 760 1236 780C1244 800 1239 824 1231 842C1222 860 1205 878 1185 889Z"/><path d="M1218 942C1187 955 1135 943 1094 939C1054 934 1008 932 976 912C944 893 907 854 904 823C901 791 928 747 957 722C987 697 1041 677 1082 674C1123 672 1171 690 1205 706C1240 723 1277 746 1289 772C1302 798 1293 833 1281 861C1269 889 1249 929 1218 942Z"/><path d="M1244 1001C1192 1018 1120 1013 1062 1003C1005 993 931 974 901 942C871 910 875 850 883 811C892 771 920 737 953 705C987 672 1032 627 1087 616C1141 605 1229 615 1279 639C1329 663 1372 716 1388 760C1404 803 1398 860 1374 900C1350 941 1296 984 1244 1001Z"/><path d="M1256 1058C1197 1082 1082 1082 1020 1061C958 1040 918 979 883 934C847 889 801 837 807 791C813 745 868 686 918 659C968 632 1047 626 1107 628C1167 629 1228 642 1277 666C1326 691 1385 731 1401 772C1417 814 1399 869 1375 917C1350 964 1315 1034 1256 1058Z"/><path d="M1251 1103C1176 1132 1036 1151 961 1125C885 1100 843 1013 798 951C753 890 682 822 689 757C696 692 766 606 840 562C913 518 1043 483 1129 493C1214 503 1300 573 1354 622C1407 670 1441 727 1450 782C1459 836 1440 895 1407 948C1374 1002 1325 1073 1251 1103Z"/><path d="M204 903C190 907 173 911 159 909C145 907 126 899 118 889C109 880 105 864 108 853C110 842 123 831 135 823C146 816 162 809 177 808C192 807 214 811 224 818C235 825 236 839 239 850C242 861 248 875 242 884C236 893 218 899 204 903Z"/><path d="M225 961C196 968 156 965 129 956C101 947 71 928 58 909C46 889 46 860 54 841C62 821 85 805 107 791C128 777 158 757 184 757C210 757 240 777 262 791C285 806 312 824 319 845C326 866 320 897 304 917C289 936 255 955 225 961Z"/><path d="M226 993C184 999 140 995 99 984C59 973 1 954 -18 926C-37 899 -34 848 -17 819C-0 790 47 768 83 754C118 740 160 732 197 734C233 737 270 752 303 771C336 790 386 818 394 848C402 878 378 926 350 950C322 975 268 988 226 993Z"/><path d="M220 1023C159 1030 94 1056 41 1041C-12 1026 -77 977 -96 936C-114 894 -97 832 -71 793C-46 755 9 726 58 706C107 685 175 664 223 672C272 680 322 722 350 753C378 784 384 818 393 859C402 900 435 971 406 999C377 1026 281 1016 220 1023Z"/><path d="M217 1105C152 1113 68 1085 3 1057C-61 1028 -153 984 -170 936C-188 888 -134 821 -102 768C-71 716 -40 649 21 622C82 595 199 587 263 606C328 625 374 691 408 736C442 780 470 828 467 874C464 919 433 971 391 1010C350 1048 281 1097 217 1105Z"/><path d="M736 611C709 612 680 602 658 591C637 581 613 563 606 546C600 529 609 507 618 488C627 469 637 441 659 432C680 423 720 430 746 435C772 441 799 451 816 466C832 481 843 504 844 524C844 544 836 572 818 587C800 601 762 610 736 611Z"/><path d="M730 653C692 659 629 658 598 641C566 624 548 582 541 551C534 521 537 485 555 458C572 432 612 403 647 394C682 386 729 398 766 407C803 415 851 425 871 447C891 468 894 508 887 535C880 561 855 586 829 606C803 625 769 647 730 653Z"/><path d="M717 718C664 714 615 673 575 644C536 616 493 586 479 549C466 512 468 455 494 421C521 387 586 356 637 345C689 335 753 344 802 359C852 373 908 398 935 430C963 463 973 514 965 554C958 595 930 646 889 673C847 700 769 723 717 718Z"/><path d="M698 718C627 710 542 715 499 685C456 655 441 587 439 539C437 492 454 443 486 400C518 357 571 295 632 280C692 266 787 289 849 312C911 336 972 376 1004 421C1036 466 1057 531 1043 583C1030 635 980 709 922 731C864 754 768 725 698 718Z"/></svg>
+    <div class="wrap hero-inner">
+      <h1 id="heroTitle">Every kid in Austin deserves a clear path to college.</h1>
+      <p class="lede">PATH is a UT Austin student organization. Our volunteers tutor and mentor Austin students from kindergarten through senior year, and walk families through every step of getting to college.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#join" data-tab="volunteer">Apply to volunteer</a>
+        <a class="btn btn-ghost" href="#join" data-tab="school">Bring PATH to your school</a>
+      </div>
+      <ul class="facts">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4B63F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Free for every student</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4B63F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Kindergarten through 12th grade</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F4B63F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Run by UT Austin students</li>
+      </ul>
+      <div class="trailhead" aria-hidden="true">
+        <svg width="60" height="130" viewBox="0 0 60 130">
+          <path d="M30 40 V130" stroke="#F4B63F" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M30 40 V130" stroke="#FFF6DD" stroke-width="2" stroke-dasharray="2 11" stroke-linecap="round" fill="none"/>
+          <circle cx="30" cy="28" r="15" fill="#0B3B34" stroke="#F4B63F" stroke-width="7"/>
+        </svg>
+        <span class="label">Start here</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey" id="trail" aria-labelledby="trailTitle">
+    <div class="wrap">
+      <div class="journey-head">
+        <h2 id="trailTitle">One trail, from kindergarten to college</h2>
+        <p class="lede">The help changes as students grow. The goal stays the same: every student finishes high school knowing exactly how to get to college.</p>
+      </div>
+      <div class="stops" id="stops">
+        <svg class="trail-svg" id="trailSvg" aria-hidden="true"><path class="base"/><path class="walk"/><path class="dash"/></svg>
+        <ol class="stop-list">
+        <li class="stop">
+          <span class="marker" aria-hidden="true"></span>
+          <div class="card">
+            <span class="grades">Grades K–5</span>
+            <h3>Elementary school</h3>
+            <p>Weekly tutoring that builds strong readers and confident math students, with the same UT volunteer every week.</p>
+            <ul><li>Reading</li><li>Math practice</li><li>Homework help</li></ul>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="marker" aria-hidden="true"></span>
+          <div class="card">
+            <span class="grades">Grades 6–8</span>
+            <h3>Middle school</h3>
+            <p>Mentoring and study habits for the years when grades start to count, plus a first real look at what college is.</p>
+            <ul><li>Study skills</li><li>Mentoring</li><li>Goal setting</li></ul>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="marker" aria-hidden="true"></span>
+          <div class="card">
+            <span class="grades">Grades 9–12</span>
+            <h3>High school</h3>
+            <p>The steps nobody explains, broken down one at a time: tests, essays, financial aid and applications.</p>
+            <ul><li>SAT and ACT basics</li><li>Essay feedback</li><li>FAFSA help</li><li>Applications</li></ul>
+          </div>
+        </li>
+        <li class="stop summit">
+          <span class="marker" aria-hidden="true">
+            <svg viewBox="0 0 96 64"><path class="cap-base" d="M30 30 L30 44 Q48 54 66 44 L66 30 L48 38 Z"/><polygon class="cap-top" points="48,6 90,24 48,42 6,24"/><path d="M82 28 L82 46" stroke="#F4B63F" stroke-width="3.5" stroke-linecap="round"/><circle cx="82" cy="50" r="4.5" fill="#F4B63F"/></svg>
+          </span>
+          <div class="card">
+            <span class="grades">The goal</span>
+            <h3>College</h3>
+            <p>Campus visits to UT so college feels like a real place, and a mentor who has been through the process.</p>
+            <ul><li>UT campus visits</li><li>College mentors</li></ul>
+          </div>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block volunteer" id="volunteer" aria-labelledby="volTitle">
+    <div class="wrap">
+      <div class="split-head">
+        <h2 id="volTitle">How volunteering works</h2>
+        <p class="lede">Any UT student can join. You don't need teaching experience, just an hour or two a week and the patience to show up for the same students all semester.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Apply</h3><p>Fill out the short form below and tell us which grades and subjects you'd like to work with.</p></li>
+        <li><h3>Get cleared</h3><p>Complete a background check and youth-protection training before your first session.</p></li>
+        <li><h3>Get matched</h3><p>We place you with a partner school or program that fits your class schedule.</p></li>
+        <li><h3>Show up weekly</h3><p>Same students, same time, every week. That consistency is what makes the difference.</p></li>
+      </ol>
+      <p class="note"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>We work alongside Austin schools and nonprofits and follow their volunteer screening, along with UT's Youth Protection Program rules for any events on campus.</span></p>
+    </div>
+  </section>
+
+  <section class="block schools" id="schools" aria-labelledby="schoolsTitle">
+    <div class="wrap schools-grid">
+      <div>
+        <h2 id="schoolsTitle">For schools, counselors and families</h2>
+        <p class="lede">Tell us what your students need. We'll build a plan around your schedule and send trained UT volunteers every week.</p>
+        <div class="cta-row"><a class="btn btn-gold" href="#join" data-tab="school">Request PATH at your school</a></div>
+      </div>
+      <ul class="offer">
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F4B63F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><b>Free, always</b><span>No cost to students, families or schools.</span></div></li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F4B63F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><b>Where you need us</b><span>During school, after school or at community centers.</span></div></li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F4B63F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><b>Screened volunteers</b><span>Background-checked and trained before day one.</span></div></li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F4B63F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><div><b>Campus visit days</b><span>Bring your students to UT for a day on campus.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="faq" aria-labelledby="faqTitle">
+    <div class="wrap faq-grid">
+      <div>
+        <h2 id="faqTitle">Questions</h2>
+        <p class="lede">Something else on your mind? Email <a class="club-email" href="mailto:utpathatx@gmail.com">utpathatx@gmail.com</a>.</p>
+      </div>
+      <div class="faq">
+        <details><summary>Do I need tutoring or teaching experience?<span class="plus" aria-hidden="true"></span></summary><p>No. We train every volunteer before their first session. Patience and showing up every week matter more than a résumé.</p></details>
+        <details><summary>What's the time commitment?<span class="plus" aria-hidden="true"></span></summary><p>One weekly session with your students, plus a training at the start of the semester. You choose times that fit your class schedule.</p></details>
+        <details><summary>Do I need a car?<span class="plus" aria-hidden="true"></span></summary><p>No. Tell us how you get around in your application and we'll match you with a school you can reach.</p></details>
+        <details><summary>Is PATH only for high school students?<span class="plus" aria-hidden="true"></span></summary><p>No. We work with elementary, middle and high school students. College prep is for high schoolers; tutoring and mentoring are for every grade.</p></details>
+        <details><summary>Are volunteers background-checked?<span class="plus" aria-hidden="true"></span></summary><p>Yes. Everyone who works with students completes the screening and training our partner schools require before their first session.</p></details>
+        <details><summary>Which schools do you work with?<span class="plus" aria-hidden="true"></span></summary><p>We're building our first partnerships now. If you're a counselor, teacher or parent, send us a request below.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block join" id="join" aria-labelledby="joinTitle">
+    <div class="wrap join-grid">
+      <div>
+        <h2 id="joinTitle">Get involved</h2>
+        <p class="lede">UT students, apply to volunteer. Schools and families, tell us what you need. Either way, an officer will email you back within a week.</p>
+        <div class="contact">
+          <a class="club-email" href="mailto:utpathatx@gmail.com">utpathatx@gmail.com</a>
+          <p>HornsLink page coming soon.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="tabs" role="tablist" aria-label="Who's filling this out?">
+          <button role="tab" id="tab-volunteer" aria-selected="true" aria-controls="panel-volunteer">I'm a UT student</button>
+          <button role="tab" id="tab-school" aria-selected="false" aria-controls="panel-school" tabindex="-1">I'm a school or family</button>
+        </div>
+
+        <div role="tabpanel" id="panel-volunteer" aria-labelledby="tab-volunteer">
+          <form id="form-volunteer" novalidate>
+            <div class="row2">
+              <div><label for="v-name">Full name</label><input id="v-name" name="Name" type="text" autocomplete="name" required></div>
+              <div><label for="v-email">UT email</label><input id="v-email" name="Email" type="email" autocomplete="email" required placeholder="you@utexas.edu"></div>
+            </div>
+            <div class="row2">
+              <div><label for="v-year">Year</label>
+                <select id="v-year" name="Year" required><option value="">Choose one</option><option>First year</option><option>Second year</option><option>Third year</option><option>Fourth year or later</option><option>Graduate student</option></select></div>
+              <div><label for="v-major">Major <span class="hint">(optional)</span></label><input id="v-major" name="Major" type="text"></div>
+            </div>
+            <fieldset>
+              <legend class="legend">Grades you'd like to work with</legend>
+              <div class="checks">
+                <label><input type="checkbox" name="Grades" value="Elementary"> Elementary</label>
+                <label><input type="checkbox" name="Grades" value="Middle school"> Middle school</label>
+                <label><input type="checkbox" name="Grades" value="High school"> High school</label>
+              </div>
+            </fieldset>
+            <div><label for="v-subjects">Subjects you're comfortable with <span class="hint">(optional)</span></label><input id="v-subjects" name="Subjects" type="text" placeholder="Algebra, reading, essays…"></div>
+            <div><label for="v-avail">When are you free?</label><textarea id="v-avail" name="Availability" required placeholder="Weekday afternoons, Tue/Thu after 3…"></textarea></div>
+            <div class="hp" aria-hidden="true"><label for="v-hp">Leave this empty</label><input id="v-hp" type="text" name="botcheck" tabindex="-1" autocomplete="off"></div>
+            <div class="submit-row">
+              <button class="btn btn-gold" type="submit">Send application</button>
+              <p>Goes straight to the PATH officers. We only use it to contact you about PATH.</p>
+            </div>
+          </form>
+        </div>
+
+        <div role="tabpanel" id="panel-school" aria-labelledby="tab-school" hidden>
+          <form id="form-school" novalidate>
+            <div class="row2">
+              <div><label for="s-name">Your name</label><input id="s-name" name="Name" type="text" autocomplete="name" required></div>
+              <div><label for="s-email">Email</label><input id="s-email" name="Email" type="email" autocomplete="email" required></div>
+            </div>
+            <div class="row2">
+              <div><label for="s-role">I am a</label>
+                <select id="s-role" name="Role" required><option value="">Choose one</option><option>Counselor</option><option>Teacher</option><option>School administrator</option><option>Parent or guardian</option><option>Nonprofit staff</option><option>Other</option></select></div>
+              <div><label for="s-org">School or organization</label><input id="s-org" name="School" type="text" required></div>
+            </div>
+            <fieldset>
+              <legend class="legend">Grades</legend>
+              <div class="checks">
+                <label><input type="checkbox" name="Grades" value="Elementary"> Elementary</label>
+                <label><input type="checkbox" name="Grades" value="Middle school"> Middle school</label>
+                <label><input type="checkbox" name="Grades" value="High school"> High school</label>
+              </div>
+            </fieldset>
+            <div><label for="s-need">What would help your students most?</label><textarea id="s-need" name="Needs" required placeholder="Weekly math tutoring for 6th graders, a FAFSA night for seniors…"></textarea></div>
+            <div class="hp" aria-hidden="true"><label for="s-hp">Leave this empty</label><input id="s-hp" type="text" name="botcheck" tabindex="-1" autocomplete="off"></div>
+            <div class="submit-row">
+              <button class="btn btn-gold" type="submit">Send request</button>
+              <p>Goes straight to the PATH officers. We only use it to contact you about PATH.</p>
+            </div>
+          </form>
+        </div>
+
+        <div class="done" id="done" hidden tabindex="-1" aria-live="polite">
+          <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="30" fill="#115E52"/><path d="M17 31l9 9 17-19" fill="none" stroke="#F3F7F4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3 id="done-title">Application sent</h3>
+          <p id="done-text"></p>
+          <div class="fallback" id="fallback" hidden>
+            <a class="btn btn-gold" id="done-mail" href="#">Email it to PATH instead</a>
+            <label for="done-body">Or copy your answers and send them to utpathatx@gmail.com:</label>
+            <textarea id="done-body" readonly></textarea>
+          </div>
+          <button class="btn btn-line" type="button" id="done-back">Send another</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="#top" aria-label="Back to top"><svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="#115E52"/><path d="M40 86 C 40 72, 82 78, 81 62 C 80 50, 60 54, 60 46" fill="none" stroke="#F4B63F" stroke-width="9" stroke-linecap="round"/><circle cx="40" cy="93" r="7" fill="#115E52" stroke="#F4B63F" stroke-width="5"/><path d="M47 30 L47 38 Q60 44 73 38 L73 30 L60 36 Z" fill="#CFE3DC"/><polygon points="60,15 83,25.5 60,36 37,25.5" fill="#F3F7F4"/><path d="M79 27 L79 37" stroke="#F4B63F" stroke-width="2.4" stroke-linecap="round"/><circle cx="79" cy="39" r="2.8" fill="#F4B63F"/></svg><b>PATH</b></a>
+      <p>Preparing Austin's Tomorrow for Higher-ed. A student organization at The University of Texas at Austin.</p>
+    </div>
+    <div class="foot-links">
+      <a class="club-email" href="mailto:utpathatx@gmail.com">utpathatx@gmail.com</a>
+      <a href="#join" data-tab="volunteer">Volunteer</a>
+      <a href="#join" data-tab="school">Request PATH</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var CLUB_EMAIL = "utpathatx@gmail.com";
+  // Optional: paste a free Web3Forms access key (web3forms.com) to send through Web3Forms.
+  // Leave blank to send through FormSubmit, which needs a one-time "Activate" click in the club inbox.
+  var WEB3FORMS_KEY = "";
+
+  /* Mobile menu */
+  var toggle = document.querySelector(".menu-toggle"), nav = document.getElementById("nav");
+  function closeMenu(){ nav.classList.remove("open"); toggle.setAttribute("aria-expanded","false"); toggle.textContent = "Menu"; }
+  toggle.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.textContent = open ? "Close" : "Menu";
+  });
+  nav.addEventListener("click", function(e){ if (e.target.closest("a")) closeMenu(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && nav.classList.contains("open")) { closeMenu(); toggle.focus(); } });
+
+  /* Trail through the journey stops, drawn as you scroll */
+  var stops = document.getElementById("stops"), svg = document.getElementById("trailSvg");
+  var base = svg.querySelector(".base"), walk = svg.querySelector(".walk"), dash = svg.querySelector(".dash");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var len = 0;
+  function buildTrail(){
+    var box = stops.getBoundingClientRect();
+    svg.setAttribute("viewBox", "0 0 " + box.width + " " + box.height);
+    var pts = Array.prototype.map.call(stops.querySelectorAll(".marker"), function(m){
+      var r = m.getBoundingClientRect();
+      return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2 };
+    });
+    if (!pts.length) return;
+    var narrow = box.width < 700;
+    var swing = narrow ? 16 : Math.min(150, box.width * 0.13);
+    var d = "M" + pts[0].x + " 0 L" + pts[0].x + " " + pts[0].y;
+    for (var i = 1; i < pts.length; i++) {
+      var a = pts[i-1], b = pts[i], dy = b.y - a.y, dir = (i % 2 ? 1 : -1);
+      d += " C" + (a.x + dir * swing) + " " + (a.y + dy * 0.35) + " " + (b.x + dir * swing) + " " + (b.y - dy * 0.35) + " " + b.x + " " + b.y;
+    }
+    base.setAttribute("d", d); walk.setAttribute("d", d); dash.setAttribute("d", d);
+    len = walk.getTotalLength();
+    walk.style.strokeDasharray = len + " " + len;
+    drawTrail();
+  }
+  function drawTrail(){
+    if (reduce) { walk.style.strokeDashoffset = 0; return; }
+    var box = stops.getBoundingClientRect(), vh = window.innerHeight;
+    var progress = (vh * 0.62 - box.top) / box.height;
+    progress = Math.max(0, Math.min(1, progress));
+    walk.style.strokeDashoffset = len * (1 - progress);
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function(){ if (!ticking) { ticking = true; requestAnimationFrame(function(){ drawTrail(); ticking = false; }); } }, { passive: true });
+  window.addEventListener("resize", buildTrail);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildTrail);
+  window.addEventListener("load", buildTrail);
+  buildTrail();
+
+  /* Tabs */
+  var tabs = [document.getElementById("tab-volunteer"), document.getElementById("tab-school")];
+  var done = document.getElementById("done");
+  function selectTab(which, focus){
+    done.hidden = true;
+    tabs.forEach(function(t){
+      var on = t.id === "tab-" + which;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      if (on && focus) t.focus();
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener("click", function(){ selectTab(t.id.replace("tab-",""), false); });
+    t.addEventListener("keydown", function(e){
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        var next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+        selectTab(next.id.replace("tab-",""), true);
+      }
+    });
+  });
+  document.querySelectorAll("[data-tab]").forEach(function(a){
+    a.addEventListener("click", function(){ selectTab(a.getAttribute("data-tab"), false); });
+  });
+
+  /* Validation */
+  function clearErrors(form){
+    form.querySelectorAll(".error").forEach(function(el){ el.remove(); });
+    form.querySelectorAll("[aria-invalid]").forEach(function(el){ el.removeAttribute("aria-invalid"); el.removeAttribute("aria-describedby"); });
+  }
+  function flag(el, msg, host){
+    var p = document.createElement("p");
+    p.className = "error"; p.id = (el.id || el.name) + "-err"; p.textContent = msg;
+    if (el.matches("input,select,textarea")) { el.setAttribute("aria-invalid","true"); el.setAttribute("aria-describedby", p.id); }
+    (host || el.parentNode).appendChild(p);
+  }
+  function validate(form, utOnly){
+    clearErrors(form);
+    var first = null;
+    form.querySelectorAll("[required]").forEach(function(el){
+      var v = el.value.trim();
+      var label = form.querySelector('label[for="' + el.id + '"]').childNodes[0].textContent.trim().toLowerCase();
+      if (!v) { flag(el, (el.tagName === "SELECT" ? "Choose your " : "Enter your ") + label + "."); first = first || el; }
+      else if (el.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { flag(el, "Enter an email like name@example.com."); first = first || el; }
+      else if (utOnly && el.type === "email" && !/@(utexas\.edu|eid\.utexas\.edu)$/i.test(v)) { flag(el, "Use your @utexas.edu email."); first = first || el; }
+    });
+    var group = form.querySelector(".checks");
+    if (!group.querySelector("input:checked")) {
+      flag(group, "Choose at least one grade level.", group.parentNode);
+      first = first || group.querySelector("input");
+    }
+    if (first) first.focus();
+    return !first;
+  }
+  function collect(form){
+    var data = {}, order = [];
+    form.querySelectorAll("input,select,textarea").forEach(function(el){
+      if (!el.name || el.name === "botcheck" || data.hasOwnProperty(el.name)) return;
+      var val = el.type === "checkbox"
+        ? Array.prototype.map.call(form.querySelectorAll('input[name="' + el.name + '"]:checked'), function(c){ return c.value; }).join(", ")
+        : el.value.trim();
+      if (val) { data[el.name] = val; order.push(el.name); }
+    });
+    return { data: data, text: order.map(function(k){ return k + ": " + data[k]; }).join("\n") };
+  }
+
+  /* Sending */
+  function post(subject, fields){
+    var url, payload = {};
+    Object.keys(fields).forEach(function(k){ payload[k] = fields[k]; });
+    if (WEB3FORMS_KEY) {
+      url = "https://api.web3forms.com/submit";
+      payload.access_key = WEB3FORMS_KEY; payload.subject = subject; payload.from_name = "PATH website"; payload.replyto = fields.Email;
+    } else {
+      url = "https://formsubmit.co/ajax/" + CLUB_EMAIL;
+      payload._subject = subject; payload._template = "table"; payload._captcha = "false"; payload._replyto = fields.Email;
+    }
+    var timeout = new Promise(function(_, reject){ setTimeout(function(){ reject(new Error("timeout")); }, 15000); });
+    return Promise.race([
+      fetch(url, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) }),
+      timeout
+    ]).then(function(r){
+      return r.json().then(function(j){ return r.ok && (j.success === true || j.success === "true"); });
+    });
+  }
+  function showDone(form, ok, subject, text){
+    var vol = form.id === "form-volunteer";
+    form.parentNode.hidden = true;
+    document.getElementById("fallback").hidden = ok;
+    document.getElementById("done-title").textContent = ok ? (vol ? "Application sent" : "Request sent") : "Your answers are saved, but they didn't send";
+    document.getElementById("done-text").textContent = ok
+      ? (vol ? "Thanks for applying. A PATH officer will email you at your UT address within a week." : "Thanks for reaching out. A PATH officer will reply to your email within a week.")
+      : "The form couldn't reach our inbox from this page. Email your answers to us instead, using the button below.";
+    if (!ok) {
+      document.getElementById("done-body").value = "Subject: " + subject + "\n\n" + text;
+      document.getElementById("done-mail").href = "mailto:" + CLUB_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
+    }
+    done.dataset.from = vol ? "volunteer" : "school";
+    done.hidden = false;
+    done.focus();
+  }
+  function handle(form, utOnly, subjectFn){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if (!validate(form, utOnly)) return;
+      var c = collect(form), subject = subjectFn(c.data);
+      if (form.querySelector('[name="botcheck"]').value) { showDone(form, true, subject, c.text); return; }
+      var btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
+      btn.disabled = true; btn.textContent = "Sending…";
+      c.data.Form = form.id === "form-volunteer" ? "Volunteer application" : "School or family request";
+      post(subject, c.data)
+        .then(function(ok){ if (ok) form.reset(); showDone(form, ok, subject, c.text); })
+        .catch(function(){ showDone(form, false, subject, c.text); })
+        .then(function(){ btn.disabled = false; btn.textContent = label; });
+    });
+  }
+  handle(document.getElementById("form-volunteer"), true, function(d){ return "PATH volunteer application: " + d.Name; });
+  handle(document.getElementById("form-school"), false, function(d){ return "PATH school request: " + d.School; });
+  document.getElementById("done-back").addEventListener("click", function(){ selectTab(done.dataset.from || "volunteer", true); });
+  document.getElementById("done-body").addEventListener("focus", function(){ this.select(); });
+})();
+</script>
+</body>
+</html>
